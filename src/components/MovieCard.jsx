@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Star, Plus, Check, Film } from 'lucide-react';
 import { Card } from './ui/Card';
 import { Badge } from './ui/Badge';
@@ -8,18 +8,27 @@ import { useWatchlist } from '../context/WatchlistContext';
 export function MovieCard({ movie }) {
   const { isInWatchlist, toggleWatchlist } = useWatchlist();
   const added = isInWatchlist(movie.id);
+  const [imgError, setImgError] = useState(false);
 
   return (
-    <Card className="flex flex-col h-full group hover:-translate-y-1 hover:shadow-purple-500/10">
-      {/* Poster */}
-      <div className="relative aspect-[16/10] overflow-hidden bg-slate-800">
-        <img
-          src={movie.poster}
-          alt={movie.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+    <Card className="flex flex-col h-full group hover:-translate-y-1 hover:shadow-purple-500/10 transition-all duration-300">
+      {/* Poster (Tỉ lệ poster điện ảnh chuẩn 2:3) */}
+      <div className="relative aspect-[2/3] overflow-hidden bg-slate-800">
+        {!imgError ? (
+          <img
+            src={movie.poster}
+            alt={movie.title}
+            onError={() => setImgError(true)}
+            className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-tr from-purple-950 via-slate-900 to-indigo-950 text-slate-400">
+            <Film className="w-10 h-10 text-purple-400 mb-1 opacity-70" />
+            <span className="text-[11px] font-semibold">{movie.title}</span>
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent pointer-events-none" />
         
         {/* Rating Badge */}
         <div className="absolute top-3 right-3">
@@ -42,7 +51,11 @@ export function MovieCard({ movie }) {
         <div>
           <div className="flex flex-wrap gap-1.5 mb-2">
             {(movie.genres || [movie.genre]).map((g) => (
-              <Badge key={g} variant="purple" className="text-[10px]">
+              <Badge
+                key={g}
+                variant={g === 'Việt Nam' ? 'emerald' : 'purple'}
+                className="text-[10px]"
+              >
                 {g}
               </Badge>
             ))}

@@ -32,9 +32,9 @@ export function App() {
             </div>
             <div>
               <h1 className="font-extrabold text-base tracking-tight text-white flex items-center gap-1.5">
-                MovieWatch <span className="text-[10px] bg-purple-500/20 text-purple-300 font-bold px-1.5 py-0.5 rounded border border-purple-500/30">FER201</span>
+                MovieWatch
               </h1>
-              <p className="text-[11px] text-slate-400 hidden sm:block">FPT University • React SPA Demo</p>
+              <p className="text-[11px] text-slate-400 hidden sm:block">FPT University • Cinema Watchlist</p>
             </div>
           </div>
 
@@ -45,7 +45,7 @@ export function App() {
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Tìm kiếm phim theo tên (vd: Inception, Batman)..."
+              placeholder="Tìm kiếm phim theo tên (vd: Mai, Mắt Biếc, Inception, Batman)..."
               className="w-full bg-slate-900 border border-slate-800 rounded-xl pl-10 pr-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
               data-testid="search-input"
             />
@@ -65,14 +65,14 @@ export function App() {
           <div className="relative z-10 max-w-2xl">
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20 mb-3">
               <Sparkles className="w-3.5 h-3.5" />
-              Kiến trúc React Component + Context API + Custom Hook
+              Tuyển Tập Phim Xuất Sắc • Việt Nam & Thế Giới
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
               Khám Phá & Lưu Trữ Những Bộ Phim Đỉnh Cao
             </h2>
             <p className="mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed">
-              Dự án thực hành môn FER201 minh họa việc quản lý trạng thái bằng React Context API, 
-              tách logic tìm kiếm bằng Custom Hook và xây dựng giao diện chuẩn Clean Architecture.
+              Không gian điện ảnh chọn lọc những tác phẩm ấn tượng của điện ảnh Việt Nam và thế giới. 
+              Tìm kiếm nhanh chóng, lọc theo thể loại yêu thích và quản lý danh sách theo dõi riêng của bạn một cách trực quan.
             </p>
           </div>
         </section>
@@ -109,10 +109,10 @@ export function App() {
               className="bg-slate-900 border border-slate-800 text-slate-200 text-xs rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-purple-500"
               data-testid="sort-select"
             >
-              <option value="rating-desc">Điểm đánh giá (Cao $\to$ Thấp)</option>
-              <option value="rating-asc">Điểm đánh giá (Thấp $\to$ Cao)</option>
+              <option value="rating-desc">Điểm đánh giá (Cao → Thấp)</option>
+              <option value="rating-asc">Điểm đánh giá (Thấp → Cao)</option>
               <option value="year-desc">Năm phát hành mới nhất</option>
-              <option value="title-asc">Tên phim (A $\to$ Z)</option>
+              <option value="title-asc">Tên phim (A → Z)</option>
             </select>
           </div>
         </div>
@@ -123,7 +123,7 @@ export function App() {
 
       {/* Footer */}
       <footer className="border-t border-slate-800/80 bg-slate-950 py-6 text-center text-xs text-slate-500">
-        <p>MovieWatch React Project • Phục vụ kiểm thử & bảo vệ đồ án SWD392 / FER201</p>
+        <p>MovieWatch • Nền Tảng Lưu Trữ & Đánh Giá Phim Tuyển Chọn</p>
       </footer>
 
       {/* Watchlist Slide-over Drawer */}

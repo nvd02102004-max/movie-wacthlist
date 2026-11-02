@@ -58,6 +58,9 @@ export function WatchlistDrawer({ isOpen, onClose }) {
                   <img
                     src={movie.poster}
                     alt={movie.title}
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                    }}
                     className="w-16 h-20 object-cover rounded-lg bg-slate-800 shrink-0"
                   />
                   <div className="flex-1 min-w-0 flex flex-col justify-between py-0.5">
